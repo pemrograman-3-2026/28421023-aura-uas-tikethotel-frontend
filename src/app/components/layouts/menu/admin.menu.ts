@@ -3,6 +3,7 @@ import { BadgeCent, Clapperboard, LayoutDashboard, MarsStroke } from "lucide-rea
 
 export const adminMenu = [
   { to: "/admin", icon: LayoutDashboard, label: "Dashboard" },
+  { to: "/admin/hotel", icon: LayoutDashboard, label: "Hotel" },
   { to: "/admin/kamar", icon: MarsStroke, label: "Kamar" },
   { to: "/admin/pemesanan", icon: Clapperboard, label: "Pemesanan" },
    { to: "/admin/pembayaran", icon: BadgeCent, label: "Pembayaran" }

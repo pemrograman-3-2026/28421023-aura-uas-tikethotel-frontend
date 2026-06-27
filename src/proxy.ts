@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export type IRole = 'USER' | 'HOTEL'
 export interface IUser {
+   id_user: number
    name: string,
    no_hp: string,
    email: string,
@@ -23,15 +24,7 @@ export function proxy (request: NextRequest) {
        if (!userCookies){
         return NextResponse.redirect(new URL("/", request.url));
        }
-       const user = JSON.parse(userCookies) as IUser
-
-      if (toAdminPage && user.role !== 'USER') {
-         return NextResponse.redirect(new URL("/", request.url));
-      }
-
-       if (toUserPage && user.role !== 'HOTEL') {
-          return NextResponse.redirect(new URL("/", request.url));
-      }
+      
     }
 
 
