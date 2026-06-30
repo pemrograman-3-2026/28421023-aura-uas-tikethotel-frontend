@@ -1,4 +1,5 @@
 'use client'
+import { showToast } from "@/app/components/toast/toast"
 import { api, baseURL } from "@/lib/axios"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -26,6 +27,20 @@ export default function AdminHotelpage () {
     useEffect(() => {
         getData()
     }, [])
+
+    const deleteData = async (id: number) => {
+        const isAgree = confirm('Are you sure')
+
+        if (isAgree) {
+           try {
+            const res = await api.delete(`hotel/delete/${id}`)
+            showToast(res.data.message, 'success')
+            getData()
+           } catch (error: any) {
+            showToast(error.response.data.message, 'danger')
+           }
+        }
+    }
 
     return (
         <div>
@@ -57,7 +72,7 @@ export default function AdminHotelpage () {
                                 <td>
                                      <div className="d-flex gap-2">
                                     <button type="button" className="btn btn-warning">Edit</button>
-                                    <button type="button" className="btn btn-danger">Delete</button>
+                                    <button onClick={() => deleteData(hotel.id_hotel)} type="button" className="btn btn-danger">Delete</button>
                                 </div>
                                 </td>
                             </tr>

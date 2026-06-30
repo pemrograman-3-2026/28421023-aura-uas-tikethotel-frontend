@@ -1,10 +1,10 @@
 'use client'
 import { showToast } from "@/app/components/toast/toast"
 import { api } from "@/lib/axios"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 export default function CreateHotelPage () {
-
     const [nama_hotel, setNama_hotel] = useState('')
     const [kota, setKota] = useState('')
     const [alamat, setAlamat] = useState('')

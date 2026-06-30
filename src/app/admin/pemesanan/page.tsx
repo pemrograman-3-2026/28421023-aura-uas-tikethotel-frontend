@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { IKamar } from "../kamar/page"
 import Image from "next/image"
+import { showToast } from "@/app/components/toast/toast"
 
 export interface IPemesanan {
     id_pemesanan: number
@@ -34,6 +35,20 @@ export default function Adminpemesananpage () {
     useEffect(() => {
         getData()
     }, [])
+
+    const deleteData = async (id: number) => {
+                const isAgree = confirm('Are you sure')
+        
+                if (isAgree) {
+                   try {
+                    const res = await api.delete(`pemesanan/delete/${id}`)
+                    showToast(res.data.message, 'success')
+                    getData()
+                   } catch (error: any) {
+                    showToast(error.response.data.message, 'danger')
+                   }
+                }
+            }
 
     return (
         <div>
@@ -79,7 +94,7 @@ export default function Adminpemesananpage () {
                                 <td>
                                      <div className="d-flex gap-2">
                                     <button type="button" className="btn btn-warning">Edit</button>
-                                    <button type="button" className="btn btn-danger">Delete</button>
+                                    <button onClick={() => deleteData(pemesanan.id_pemesanan)} type="button" className="btn btn-danger">Delete</button>
                                 </div>
                                 </td>
                             </tr>
