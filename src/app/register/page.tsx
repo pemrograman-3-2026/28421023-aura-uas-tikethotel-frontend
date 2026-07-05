@@ -9,9 +9,6 @@ import { use, useState } from "react";
 export default function RegisterPage() {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
-    const [no_hp, setNo_hp] = useState('')
-    const [email, setEmail] = useState('')
-    const [alamat, setAlamat] = useState('')
     const router = useRouter()
     const onSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault()
@@ -19,11 +16,7 @@ export default function RegisterPage() {
         try {
           const res = await api.post('user/register', {
             name,
-            password,
-            no_hp,
-            email,
-            alamat
-            
+            password
           })
           showToast(res.data.message, 'success')
           router.push('/')
@@ -68,40 +61,6 @@ export default function RegisterPage() {
                 placeholder="Masukan Password"
                  value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-             <div className="mb-3">
-              <label className="form-label small fw-semibold">Nomor Telepon</label>
-              <input
-                type="text"
-                name="no_hp"
-                className="form-control form-control-sm py-2"
-                placeholder="Masukan No Telp"
-                 value={no_hp}
-                onChange={(e) => setNo_hp(e.target.value)}
-              />
-            </div>
-             <div className="mb-3">
-              <label className="form-label small fw-semibold">Email</label>
-              <input
-                type="text"
-                name="email"
-                className="form-control form-control-sm py-2"
-                placeholder="Masukan Email"
-                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-             <div className="mb-3">
-              <label className="form-label small fw-semibold">Alamat</label>
-              <input
-                type="text"
-                name="alamat"
-                className="form-control form-control-sm py-2"
-                placeholder="Masukan Alamat"
-                 value={alamat}
-                onChange={(e) => setAlamat(e.target.value)}
               />
             </div>
 

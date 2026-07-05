@@ -37,7 +37,7 @@ export default function Navbar(
         >
           ☰
         </button>
-        <span className="text-muted small fw-semibold">Admin</span>
+        <span className="text-muted small fw-semibold">Selamat Datang</span>
       </div>
 
       <div className="d-flex align-items-center gap-2">

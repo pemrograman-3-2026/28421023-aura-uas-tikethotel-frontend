@@ -25,7 +25,7 @@ export default function LoginPage() {
 
       showToast(res.data.message, 'success')
       const data = res.data.data as IUser
-      router.push(`/${data.name.toLocaleLowerCase()}`)
+      router.push(`/${data.role.toLocaleLowerCase()}`)
     } catch (error: any) {
       showToast(error.response.data.message, 'danger')
     }
